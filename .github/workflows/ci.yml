@@ -26,4 +26,10 @@ jobs:
         run: python -c "from app.app import app; print('Flask application loaded successfully')"
 
       - name: Build Docker image
-        run: docker build -t devops-flask-app:latest .
+        run: docker build -t nawaz77/devops-project:latest .
+
+      - name: Login to Docker Hub
+        run: echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
+
+      - name: Push Docker image
+        run: docker push nawaz77/devops-project:latest
