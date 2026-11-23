@@ -24,3 +24,6 @@ jobs:
 
       - name: Verify Flask application
         run: python -c "from app.app import app; print('Flask application loaded successfully')"
+
+      - name: Build Docker image
+        run: docker build -t devops-flask-app:latest .
